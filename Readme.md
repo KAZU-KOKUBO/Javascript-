@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Igor Fendrikh](https://up.htmlacademy.ru/javascript/24/user/1552321).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Позняк](https://htmlacademy.ru/profile/id907403).
 
 ---
 
