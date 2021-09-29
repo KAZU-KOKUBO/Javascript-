@@ -1,6 +1,6 @@
 function getRandomInteger (from, to) {
   if (from >= to) {
-    return new ReferenceError('Значение "from" должно быть меньше значения "to" ');
+    return new ReferenceError('Минимальное значение не может превышать максимальное');
   }
   from = Math.ceil(from);
   to = Math.floor(to);
@@ -10,7 +10,7 @@ getRandomInteger (0, 10);
 
 function getRandomIntegerPoint (to, from, number) {
   if (from >= to) {
-    return new ReferenceError('Значение "from" должно быть меньше значения "to" ');
+    return new ReferenceError('Минимальное значение не может превышать максимальное');
   }
   const Digits = Math.random() * (to - from + 1) + to;
   return +Digits.toFixed(number);
