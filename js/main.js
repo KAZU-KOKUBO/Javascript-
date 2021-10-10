@@ -23,12 +23,14 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
+
 const getRandomInt = (min, max, counter = 0) => {
   if (min > max || min < 0 || max <= 0) {
     return false;
   }
   return +(Math.random() * (max - min) + min).toFixed(counter);
 };
+
 const getAvatar = () => {
   const avatarId = getRandomInt(1, 9);
   const author = {
@@ -37,8 +39,18 @@ const getAvatar = () => {
   return author;
 };
 
-const getRandomOfferElement = (elements) =>
-  elements[getRandomInt(0, elements.length - 1)];
+const getRandomOfferElement = (array) => array[getRandomInt(0, array.length - 1)];
+
+const createRandomArray = (array) => {
+  const randomArray = [];
+
+  for (let index = 0; index < getRandomInt(1, array.length - 1); index++) {
+    randomArray.push(array[getRandomInt(0, array.length - 1)]);
+  }
+
+  return Array.from(new Set (randomArray));
+};
+
 const createOffer = () => {
   const lat = getRandomInt(35.65, 35.7, 5);
   const lng = getRandomInt(139.7, 139.8, 5);
@@ -54,9 +66,9 @@ const createOffer = () => {
       guests: getRandomInt(1, 3),
       checking: getRandomOfferElement(CHECK_TIMES),
       checkout: getRandomOfferElement(CHECK_TIMES),
-      features: getRandomOfferElement(FEATURES),
+      features: createRandomArray(FEATURES),
       description: getRandomOfferElement(DESCRIPTIONS),
-      photos: getRandomOfferElement(PHOTOS),
+      photos: createRandomArray(PHOTOS),
     },
     location: {
       lat,
@@ -64,5 +76,6 @@ const createOffer = () => {
     },
   };
 };
+
 const similarOffers = Array.from({ length: OFFERS_COUNT }, createOffer);
 console.log(similarOffers);
