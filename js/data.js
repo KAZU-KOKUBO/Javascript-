@@ -41,7 +41,7 @@ const createOffer = () => {
       type: getRandomOfferElement(TYPE),
       rooms: getRandomInt(1, 3),
       guests: getRandomInt(1, 3),
-      checking: getRandomOfferElement(CHECK_TIMES),
+      checkin: getRandomOfferElement(CHECK_TIMES),
       checkout: getRandomOfferElement(CHECK_TIMES),
       features: createRandomArray(FEATURES),
       description: getRandomOfferElement(DESCRIPTIONS),
@@ -55,6 +55,5 @@ const createOffer = () => {
 };
 
 const similarOffers = Array.from({ length: OFFERS_COUNT }, createOffer);
-console.log(similarOffers);
 
-export {createOffer};
+export { similarOffers };

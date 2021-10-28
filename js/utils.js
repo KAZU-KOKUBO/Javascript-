@@ -8,7 +8,10 @@ const getRandomInt = (min, max, counter = 0) => {
 };
 
 const getAvatar = () => {
-  const avatarId = getRandomInt(1, 9);
+  let avatarId = getRandomInt(1, 10);
+  if (avatarId < 10) {
+    avatarId = `0${avatarId}`;
+  }
   const author = {
     avatar: `img/avatars/user${avatarId}.png`,
   };
