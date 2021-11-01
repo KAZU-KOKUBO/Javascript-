@@ -62,11 +62,14 @@ const onRoomsChange = ({ target }) => {
   guestsSelected.value = roomsOptions[roomsSelected.value].value;
 };
 
-export const validatedForm = () => {
+const validatedForm = () => {
   typeInputChange();
+
   checkIn.addEventListener('change', onTimeInChange);
   checkOut.addEventListener('change', onTimeOutChange);
   typeSelected.addEventListener('change', onTypeInputChange);
   roomsSelected.addEventListener('change', onRoomsChange);
 };
 
+
+export { validatedForm };
