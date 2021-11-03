@@ -1,8 +1,8 @@
 import {addElement} from './elements.js';
-import {validatedForm} from './form.js';
+import {validateForm} from './form.js';
 
 
 addElement();
-validatedForm();
+validateForm();
 
 

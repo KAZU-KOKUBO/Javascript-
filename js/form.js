@@ -1,10 +1,10 @@
-const roomsSelected = document.querySelector('#rooms__number');
-const guestsSelected = document.querySelector('#capacity');
-const guestsOptions = document.querySelector('#capacity option');
+const roomsSelect = document.querySelector('#room_number');
+const guestsSelect = document.querySelector('#capacity');
+const guestsOptions = document.querySelectorAll('#capacity option');
 const priceInput = document.querySelector('#price');
-const typeSelected = document.querySelector('#type');
-const checkIn = document.querySelector('#check-in');
-const checkOut = document.querySelector('#checkout');
+const typeSelect = document.querySelector('#type');
+const checkIn = document.querySelector('#timein');
+const checkOut = document.querySelector('#timeout');
 
 const minPriceRooms = {
   bungalow: 0,
@@ -15,8 +15,8 @@ const minPriceRooms = {
 };
 
 const typeInputChange = () => {
-  priceInput.placeholder = minPriceRooms[typeSelected.value];
-  priceInput.min = minPriceRooms[typeSelected.value];
+  priceInput.placeholder = minPriceRooms[typeSelect.value];
+  priceInput.min = minPriceRooms[typeSelect.value];
 };
 
 const onTypeInputChange = () => {
@@ -59,17 +59,17 @@ const onRoomsChange = ({ target }) => {
     guestsOptions[item].disabled = false;
   });
 
-  guestsSelected.value = roomsOptions[roomsSelected.value].value;
+  guestsSelect.value = roomsOptions[roomsSelect.value].value;
 };
 
-const validatedForm = () => {
+const validateForm = () => {
   typeInputChange();
 
   checkIn.addEventListener('change', onTimeInChange);
   checkOut.addEventListener('change', onTimeOutChange);
-  typeSelected.addEventListener('change', onTypeInputChange);
-  roomsSelected.addEventListener('change', onRoomsChange);
+  typeSelect.addEventListener('change', onTypeInputChange);
+  roomsSelect.addEventListener('change', onRoomsChange);
 };
 
 
-export { validatedForm };
+export { validateForm };
