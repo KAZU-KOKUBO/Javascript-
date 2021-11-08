@@ -1,8 +1,3 @@
-import { similarOffers } from './data.js';
-
-const template = document.querySelector('#card').content;
-const element = template.querySelector('.popup');
-
 const typeToText = {
   'flat': 'Квартира',
   'bungalow': 'Бунгало',
@@ -81,25 +76,20 @@ const createFeaturesList = (parent, cssClass, data) => {
   parent.querySelector(cssClass).innerHTML = featuresList();
 };
 
-const advertisement = ({ author, offer }) => {
-  const newElement = element.cloneNode(true);
-  createSimpleText(newElement, '.popup__title', offer.title);
-  createSimpleText(newElement, '.popup__text--address', offer.address);
-  createSimpleText(newElement, '.popup__type', typeToText[offer.address]);
-  createSimpleText(newElement, '.popup__description', offer.description);
-  createPriceText(newElement, '.popup__text--price', offer.price);
-  createAvatar(newElement, '.popup__avatar', author.avatar);
-  createCapacityText(newElement, '.popup__text--capacity', offer.rooms, offer.guests);
-  createTimeText(newElement, '.popup__text--time', offer.checkin, offer.checkout);
-  createPhotosList(newElement, '.popup__photos', offer.photos);
-  createFeaturesList(newElement, '.popup__features', offer.features);
+export const createCard = ({ author, offer }) => {
+  const cardTemplate = document.querySelector('#card').content;
+  const card = cardTemplate.querySelector('.popup');
+  const newCard = card.cloneNode(true);
+  createSimpleText(newCard, '.popup__title', offer.title);
+  createSimpleText(newCard, '.popup__text--address', offer.address);
+  createSimpleText(newCard, '.popup__type', typeToText[offer.address]);
+  createSimpleText(newCard, '.popup__description', offer.description);
+  createPriceText(newCard, '.popup__text--price', offer.price);
+  createAvatar(newCard, '.popup__avatar', author.avatar);
+  createCapacityText(newCard, '.popup__text--capacity', offer.rooms, offer.guests);
+  createTimeText(newCard, '.popup__text--time', offer.checkin, offer.checkout);
+  createPhotosList(newCard, '.popup__photos', offer.photos);
+  createFeaturesList(newCard, '.popup__features', offer.features);
 
-  const canvas = document.querySelector('#map-canvas');
-  canvas.append(newElement);
+  return newCard;
 };
-
-const addElement = () => {
-  advertisement(similarOffers[0]);
-};
-
-export { addElement };

@@ -1,8 +1,11 @@
-import {addElement} from './elements.js';
 import {validateForm} from './form.js';
+import {disablePage, activePage} from './set-page-status.js';
+import {map} from './map.js';
 
 
-addElement();
 validateForm();
+disablePage();
+map();
+activePage();
 
 

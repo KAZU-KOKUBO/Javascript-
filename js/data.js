@@ -4,6 +4,10 @@ const OFFERS_COUNT = 10;
 const TITLE = 'Недвижимость в вашем городе';
 const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECK_TIMES = ['12:00', '13:00', '14:00'];
+const LAT_MIN = 35.95;
+const LAT_MAX = 35.99;
+const LNG_MIN = 139.61;
+const LNG_MAX = 139.75;
 const FEATURES = [
   'wifi',
   'dishwasher',
@@ -29,8 +33,8 @@ const PHOTOS = [
 ];
 
 const createOffer = () => {
-  const lat = getRandomInt(35.65, 35.7, 5);
-  const lng = getRandomInt(139.7, 139.8, 5);
+  const lat = getRandomInt(LAT_MIN, LAT_MAX, 5);
+  const lng = getRandomInt(LNG_MIN, LNG_MAX, 5);
 
   return {
     author: getAvatar(),
