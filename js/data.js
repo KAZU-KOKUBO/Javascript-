@@ -4,10 +4,10 @@ const OFFERS_COUNT = 10;
 const TITLE = 'Недвижимость в вашем городе';
 const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECK_TIMES = ['12:00', '13:00', '14:00'];
-const LAT_MIN = 35.95;
-const LAT_MAX = 35.99;
-const LNG_MIN = 139.61;
-const LNG_MAX = 139.75;
+const LAT_MIN = 35.66;
+const LAT_MAX = 35.70;
+const LNG_MIN = 139.67;
+const LNG_MAX = 139.82;
 const FEATURES = [
   'wifi',
   'dishwasher',

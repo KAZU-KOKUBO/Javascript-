@@ -9,16 +9,16 @@ const mapInteractive = L.map('map-canvas');
 let mainPinMarker;
 let markerGroup;
 
-const CITY_CENTER = {
-  lat: 35.9865,
-  lng: 139.69171,
+const cityCenter = {
+  lat: 35.6839,
+  lng: 139.75323,
 };
 
 const cardArray = similarOffers;
 
 resetButton.addEventListener('click', () => {
-  mainPinMarker.setLatLng (CITY_CENTER);
-  mapInteractive.setView(CITY_CENTER, 12);
+  mainPinMarker.setLatLng (cityCenter);
+  mapInteractive.setView(cityCenter, 12);
 });
 
 const addMarkersGroup = () => {
@@ -53,7 +53,7 @@ export const map = () => {
   mapInteractive.on('load', () => {
     disablePage, activePage(addFormElement);
     addMarkersGroup();
-  }).setView(CITY_CENTER, 12);
+  }).setView(cityCenter, 12);
 
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -68,7 +68,7 @@ export const map = () => {
     iconAnchor: [26, 52],
   });
 
-  mainPinMarker = L.marker(CITY_CENTER,
+  mainPinMarker = L.marker(cityCenter,
     {
       draggable: true,
       icon: mainPinIcon,
@@ -76,7 +76,7 @@ export const map = () => {
 
   mainPinMarker.addTo(mapInteractive);
 
-  address.value = `${CITY_CENTER.lat.toFixed(5)}, ${CITY_CENTER.lng.toFixed(5)}`;
+  address.value = `${cityCenter.lat.toFixed(5)}, ${cityCenter.lng.toFixed(5)}`;
 
   mainPinMarker.on('moveend', (evt) => {
     address.value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
