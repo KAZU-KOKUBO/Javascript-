@@ -17,13 +17,14 @@ const MAP_CENTER = {
 const cardArray = similarOffers;
 
 resetButton.addEventListener('click', () => {
-  mainPinMarker.setLatLng (MAP_CENTER);
+  mainPinMarker.setLatLng(MAP_CENTER);
   mapInteractive.setView(MAP_CENTER, 12);
 });
 
+const ADVERT_COUNT = 10;
 const addMarkersGroup = () => {
   markerGroup = L.layerGroup().addTo(mapInteractive);
-  cardArray.forEach((el) => {
+  cardArray.slice(0, ADVERT_COUNT).forEach((el) => {
     const lat = el.location.lat;
     const lng = el.location.lng;
 
@@ -82,3 +83,45 @@ export const map = () => {
     address.value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
   });
 };
+
+const resetMap = () => {
+  map.closePopup();
+  map.setView(MAP_CENTER, 12);
+  mainPinMarker.setLatLng(MAP_CENTER);
+};
+
+const showPopover = (templateId) => {
+  const bodyElement = document.querySelector('body');
+  const messageTemplateElement = document.querySelector(`#${templateId}`).content;
+  const messageElement = messageTemplateElement.firstElementChild.cloneNode(true);
+  const onEscapeKeyPress = (evt) => {
+    if (evt.key === 'Escape') {
+      messageElement.remove();
+      window.removeEventListener('keydown', onEscapeKeyPress);
+    }
+  };
+
+  const onMessageClick = () => {
+    messageElement.remove();
+    window.removeEventListener('keydown', onEscapeKeyPress);
+  };
+
+  messageElement.addEventListener('click', onMessageClick);
+  window.addEventListener('keydown', onEscapeKeyPress);
+  bodyElement.appendChild(messageElement);
+};
+
+const addressElement = addFormElement.querySelector('#address');
+const resetForm = () => {
+  addFormElement.reset();
+  resetMap();
+  addressElement.value = `${MAP_CENTER.lat}, ${MAP_CENTER.lng}`;
+};
+
+const resetButtoElement = addFormElement.querySelector('.ad-form__reset');
+resetButtoElement.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  resetForm();
+});
+
+export { showPopover, resetForm };
