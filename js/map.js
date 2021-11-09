@@ -1,4 +1,4 @@
-import { disablePage, activePage } from './set-page-status.js';
+import { setEnabledFormState } from './set-page-status.js';
 import { createCard } from './elements.js';
 import { similarOffers } from './data.js';
 
@@ -51,7 +51,7 @@ const addMarkersGroup = () => {
 
 export const map = () => {
   mapInteractive.on('load', () => {
-    disablePage, activePage(addFormElement);
+    setEnabledFormState(addFormElement);
     addMarkersGroup();
   }).setView(MAP_CENTER, 12);
 

@@ -1,21 +1,21 @@
 const forms = document.querySelectorAll('form');
 
-const setElementDisableState = (form) => {
-  form.querySelectorAll('form input, select, button, textarea').forEach((item) => item.disabled = true);
+const setElementDisabledState = (form) => {
+  form.querySelectorAll('form select, input, button, textarea').forEach((item) => item.disabled = true);
 };
 
-const setElementEnableState = (form) => {
-  form.querySelectorAll('form input, select, button, textarea').forEach((item) => item.disabled = false);
+const setElementEnabledState = (form) => {
+  form.querySelectorAll('form select, input, button, textarea').forEach((item) => item.disabled = false);
 };
 
-export const setDeactivatePageState = () => {
+export const setDisabledFormState = () => {
   forms.forEach((form) => {
     form.classList.add('disabled');
-    setElementDisableState(form);
+    setElementDisabledState(form);
   });
 };
 
-export const setActivateFormState = (form) => {
+export const setEnabledFormState = (form) => {
   form.classList.remove('disabled');
-  setElementEnableState(form);
+  setElementEnabledState(form);
 };
