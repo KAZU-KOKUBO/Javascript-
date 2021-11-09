@@ -118,8 +118,8 @@ const resetForm = () => {
   addressElement.value = `${MAP_CENTER.lat}, ${MAP_CENTER.lng}`;
 };
 
-const resetButtoElement = addFormElement.querySelector('.ad-form__reset');
-resetButtoElement.addEventListener('click', (evt) => {
+const resetButtonElement = addFormElement.querySelector('.ad-form__reset');
+resetButtonElement.addEventListener('click', (evt) => {
   evt.preventDefault();
   resetForm();
 });
