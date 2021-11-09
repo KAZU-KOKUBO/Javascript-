@@ -32,6 +32,7 @@ const createRandomArray = (array) => {
 };
 
 const ALERT_SHOW_TIME = 5000;
+
 const showAlert = () => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = 100;
