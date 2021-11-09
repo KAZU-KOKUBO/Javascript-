@@ -8,8 +8,8 @@ const getData = (onSuccess, onError) => {
     })
     .catch(() => onError());
 };
-const setUserFormSubmit = (formElement, onSuccess, onError) => {
-  formElement.addEventListener('submit', (evt) => {
+const setUserFormSubmit = ( addFormElement, onSuccess, onError) => {
+  addFormElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const formData = new FormData (evt.target);
     fetch(

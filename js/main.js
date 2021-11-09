@@ -2,7 +2,10 @@ import { validateForm } from './form.js';
 import { setDisabledFormState, setEnabledFormState } from './set-page-status.js';
 import { map, addFormElement, resetForm, showPopover } from './map.js';
 import { getData, setUserFormSubmit } from './api.js';
+import { showAlert } from './utils.js';
 const filterFormElement = document.querySelector('.map__filters');
+
+
 const onFormSubmitSuccess = () => {
   showPopover('success');
   resetForm();
@@ -18,5 +21,5 @@ setDisabledFormState();
 
 setEnabledFormState(filterFormElement);
 
-getData(map);
+getData(map, showAlert);
 setUserFormSubmit(addFormElement, onFormSubmitSuccess, onFormSubmitError);

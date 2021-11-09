@@ -111,17 +111,10 @@ const showPopover = (templateId) => {
   bodyElement.appendChild(messageElement);
 };
 
-const addressElement = addFormElement.querySelector('#address');
 const resetForm = () => {
   addFormElement.reset();
   resetMap();
-  addressElement.value = `${MAP_CENTER.lat}, ${MAP_CENTER.lng}`;
+  address.value = `${MAP_CENTER.lat}, ${MAP_CENTER.lng}`;
 };
-
-const resetButtonElement = addFormElement.querySelector('.ad-form__reset');
-resetButtonElement.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  resetForm();
-});
 
 export { showPopover, resetForm };
