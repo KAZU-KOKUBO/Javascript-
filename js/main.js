@@ -1,11 +1,14 @@
 import {validateForm} from './form.js';
-import {disablePage, activePage} from './set-page-status.js';
+import {setDisabledFormState, setEnabledFormState} from './set-page-status.js';
 import {map} from './map.js';
 
+const filterFormElement = document.querySelector('.map__filters');
 
 validateForm();
-disablePage();
-map();
-activePage();
 
+setDisabledFormState();
+
+map();
+
+setEnabledFormState(filterFormElement);
 

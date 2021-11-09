@@ -1,30 +1,21 @@
-const form = document.querySelector('.ad-form');
-const formDisabled = 'ad-form--disabled';
-const formElements = form.querySelectorAll('fieldset');
-const filter = document.querySelector('.map__filters');
-const filterDisabled = 'map__filters--disabled';
-const filterElements = filter.querySelectorAll('[class^=\'map__\']');
+const forms = document.querySelectorAll('form');
 
-const disablePage = () => {
-  filterElements.forEach((element) => {
-    element.setAttribute('disabled', '');
-  });
-  form.classList.add(formDisabled);
-  filter.classList.add(filterDisabled);
-  formElements.forEach((element) => {
-    element.setAttribute('disabled', '');
+const setElementDisableState = (form) => {
+  form.querySelectorAll('form input, select, button, textarea').forEach((item) => item.disabled = true);
+};
+
+const setElementEnableState = (form) => {
+  form.querySelectorAll('form input, select, button, textarea').forEach((item) => item.disabled = false);
+};
+
+export const setDeactivatePageState = () => {
+  forms.forEach((form) => {
+    form.classList.add('disabled');
+    setElementDisableState(form);
   });
 };
 
-const activePage = () => {
-  filterElements.forEach((element) => {
-    element.removeAttribute('disabled');
-  });
-  form.classList.remove(formDisabled);
-  filter.classList.remove(filterDisabled);
-  formElements.forEach((element) => {
-    element.removeAttribute('disabled');
-  });
+export const setActivateFormState = (form) => {
+  form.classList.remove('disabled');
+  setElementEnableState(form);
 };
-
-export {disablePage, activePage};
