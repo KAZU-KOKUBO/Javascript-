@@ -2,7 +2,7 @@ import { getData } from '../api/api-service.js';
 import { getSuccessHandler } from '../api-callbacks/get-success-handler.js';
 import { getErrorHandler } from '../api-callbacks/error-action-handler.js';
 import { activateAdForm } from '../ad-form/activate-ad-form.js';
-import { filterAdverts } from '../filter/filter.js';
+import { createCard } from '../elements.js';
 
 const ADVERT_COUNT = 10;
 const MAP_CENTER = {
@@ -30,7 +30,7 @@ export const addMarkersGroup = (arr) => {
   markerGroup = L.layerGroup().addTo(mapInteractive);
   arr
     .slice()
-    .filter(filterAdverts)
+    .filter()
     .slice(0, ADVERT_COUNT)
     .forEach((el) => {
       const lat = el.location.lat;
@@ -51,13 +51,13 @@ export const addMarkersGroup = (arr) => {
         },
       );
 
-      marker.addTo(markerGroup).bindPopup(createSimilarObjectsFragment(el), {
+      marker.addTo(markerGroup).bindPopup(createCard(el), {
         keepInView: true,
       });
     });
 };
 
-export const initmap = () => {
+export const initMap = () => {
   mapInteractive
     .on('load', () => {
       activateAdForm();

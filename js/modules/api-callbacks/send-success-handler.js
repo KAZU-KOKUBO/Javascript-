@@ -1,6 +1,6 @@
-import { isEscEvent, renderElement } from '../utils/utils';
-import { setPinMarkersStartState } from '../map/map';
-import { resetAddForm } from '../ad-form/activate-ad-form';
+import { isEscEvent, renderElement } from '../utils/utils.js';
+import { setPinMarkersStartState } from '../map/map.js';
+import { resetAddForm } from '../ad-form/activate-ad-form.js';
 
 const forms = document.querySelectorAll('form');
 
