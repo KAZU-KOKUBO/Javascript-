@@ -1,4 +1,3 @@
-import { createSimilarObjectsFragment } from './popup.js';
 import { getData } from '../api/api-service.js';
 import { getSuccessHandler } from '../api-callbacks/get-success-handler.js';
 import { getErrorHandler } from '../api-callbacks/error-action-handler.js';
