@@ -1,25 +1,6 @@
-import { validateForm } from './form.js';
-import { setDisabledFormState, setEnabledFormState } from './set-page-status.js';
-import { map, addFormElement, resetForm, showPopover } from './map.js';
-import { getData, setUserFormSubmit } from './api.js';
-import { showAlert } from './utils.js';
-const filterFormElement = document.querySelector('.map__filters');
+import { setDeactivatePageState} from './modules/map/set-forms-state.js';
+import { initMap } from './modules/map/map.js';
 
 
-const onFormSubmitSuccess = () => {
-  showPopover('success');
-  resetForm();
-};
-
-const onFormSubmitError = () => {
-  showPopover('error');
-};
-
-validateForm();
-
-setDisabledFormState();
-
-setEnabledFormState(filterFormElement);
-
-getData(map, showAlert);
-setUserFormSubmit(addFormElement, onFormSubmitSuccess, onFormSubmitError);
+setDeactivatePageState();
+initMap();
