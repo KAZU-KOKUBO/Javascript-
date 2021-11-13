@@ -1,5 +1,5 @@
 import { isEscEvent, renderElement } from '../utils/utils.js';
-import { setPinMarkersStartState, resetMap } from '../map/map.js';
+import { setPinMarkersStartState} from '../map/map.js';
 import { resetAddForm } from '../ad-form/activate-ad-form.js';
 
 const forms = document.querySelectorAll('form');
@@ -38,6 +38,5 @@ export const sendSuccessHandler = () => {
   addListeners();
   forms.forEach((form) => form.reset());
   resetAddForm();
-  resetMap();
   setPinMarkersStartState();
 };

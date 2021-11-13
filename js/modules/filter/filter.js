@@ -3,6 +3,7 @@ const PRICE_RANGE = {
   middle: 50000,
 };
 
+const filterForm = document.querySelector('.map__filters');
 const typeFilterSelect = document.querySelector('#housing-type');
 const priceFilterSelect = document.querySelector('#housing-price');
 const roomsFilterSelect = document.querySelector('#housing-rooms');
@@ -39,13 +40,19 @@ const filterByFeatures = ({features}) => {
   return false;
 };
 
-export const setDataRanking = (data) =>
-  data
-    .reduce((rankedData, item) => {
+export const setFilterFormChange = (cb) => {
+  filterForm.addEventListener('change', () => {
+    cb();
+  });
+};
+
+export const setResRanking = (res) =>
+  res
+    .reduce((rankedRes, item) => {
       const rank = item.offer.features && item.offer.features.length ? item.offer.features.length : 0;
       item.offer.rank = rank;
-      rankedData.push(item);
-      return rankedData;
+      rankedRes.push(item);
+      return rankedRes;
     }, [])
     .sort((a, b) => b.offer.rank - a.offer.rank);
 
