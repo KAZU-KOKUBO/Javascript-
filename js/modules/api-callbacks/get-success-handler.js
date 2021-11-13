@@ -6,7 +6,7 @@ const filtersForm = document.querySelector('.map__filters');
 
 export const getSuccessHandler = (res) => {
   const rankingRes = setResRanking(res);
-  addMarkersGroup(res);
+  addMarkersGroup(rankingRes);
   setActivateFormState(filtersForm);
   setFilterFormChange(() => addMarkersGroup(rankingRes));
 };

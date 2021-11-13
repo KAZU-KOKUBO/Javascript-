@@ -581,6 +581,14 @@ fieldset {
 
   background-color: #e4e4de;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad-form__photo img {
+  max-width: 70px;
+  max-height: 70px;
 }
 
 .ad-form__element--submit {

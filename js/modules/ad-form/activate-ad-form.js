@@ -37,6 +37,6 @@ export const activateAdForm = () => {
   validateForm();
   addChooserInputsListeners();
   addForm.addEventListener('submit', addFormSubmitHandler);
-  addForm.addEventListener('submit', addFormResetHandler);
+  addForm.addEventListener('reset', addFormResetHandler);
 };
 
