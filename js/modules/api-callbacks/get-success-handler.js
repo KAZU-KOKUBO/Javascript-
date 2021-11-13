@@ -6,3 +6,5 @@ const filtersForm = document.querySelector('.map__filters');
 export const getSuccessHandler = (res) => {
   addMarkersGroup(res);
 };
+
+setActivateFormState(filtersForm);
