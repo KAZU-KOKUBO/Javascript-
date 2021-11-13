@@ -14,7 +14,7 @@ const errorBlockClickHandler = (evt) => {
 
 const documentKeyDownHandler = (evt) => {
   evt.preventDefault();
-  if (isEscEvent(evt)) {
+  if (isEscEvent(evt) && document.querySelector('.error')) {
     document.querySelector('.error').remove();
   }
 };

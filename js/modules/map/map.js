@@ -3,6 +3,7 @@ import { getSuccessHandler } from '../api-callbacks/get-success-handler.js';
 import { getErrorHandler } from '../api-callbacks/error-action-handler.js';
 import { activateAdForm } from '../ad-form/activate-ad-form.js';
 import { createCard } from '../elements.js';
+import { filterAdverts, setDataRanking } from '../filter/filter.js';
 
 const ADVERT_COUNT = 10;
 const MAP_CENTER = {
@@ -26,11 +27,11 @@ export const setPinMarkersStartState = () => {
   mapInteractive.setView(MAP_CENTER, 12);
 };
 
-export const addMarkersGroup = (arr) => {
+export const addMarkersGroup = (adverts) => {
   markerGroup = L.layerGroup().addTo(mapInteractive);
-  arr
+  setDataRanking(adverts)
     .slice()
-    .filter()
+    .filter(filterAdverts)
     .slice(0, ADVERT_COUNT)
     .forEach((el) => {
       const lat = el.location.lat;
@@ -89,4 +90,11 @@ export const initMap = () => {
   mainPinMarker.addTo(mapInteractive).on('move', () => {
     addressInput.value = `${mainPinMarker.getLatLng().lat.toFixed(5)}, ${mainPinMarker.getLatLng().lng.toFixed(5)}`;
   });
+};
+
+
+export const resetMap = () => {
+  mainPinMarker.setLatLng(MAP_CENTER);
+  mapInteractive.setView(MAP_CENTER);
+  markerGroup.clearLayers();
 };

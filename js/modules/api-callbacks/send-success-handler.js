@@ -1,16 +1,16 @@
 import { isEscEvent, renderElement } from '../utils/utils.js';
-import { setPinMarkersStartState } from '../map/map.js';
+import { setPinMarkersStartState, resetMap } from '../map/map.js';
 import { resetAddForm } from '../ad-form/activate-ad-form.js';
 
 const forms = document.querySelectorAll('form');
 
-const createrSuccessMarkup = () => `<div class="success">
+const createSuccessMarkup = () => `<div class="success">
                                     <p class="success__message">Ваше объявление<br>успешно размещено!</p>
                                     </div>`;
 
 const successBlockClickHandler = (evt) => {
   evt.preventDefault();
-  if (evt.target.closest('success')) {
+  if (evt.target.closest('.success')) {
     closeSuccessBlock();
   }
 };
@@ -34,9 +34,10 @@ function closeSuccessBlock() {
 }
 
 export const sendSuccessHandler = () => {
-  renderElement(createrSuccessMarkup(), document.body);
+  renderElement(createSuccessMarkup(), document.body);
   addListeners();
   forms.forEach((form) => form.reset());
   resetAddForm();
+  resetMap();
   setPinMarkersStartState();
 };
