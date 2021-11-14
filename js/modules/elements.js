@@ -76,7 +76,7 @@ const createFeaturesList = (parent, cssClass, data) => {
   parent.querySelector(cssClass).innerHTML = featuresList();
 };
 
-export const createCard = ({ author, offer }) => {
+export const createCard = ({author, offer}) => {
   const cardTemplate = document.querySelector('#card').content;
   const card = cardTemplate.querySelector('.popup');
   const newCard = card.cloneNode(true);
