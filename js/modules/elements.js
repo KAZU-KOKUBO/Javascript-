@@ -82,7 +82,7 @@ export const createCard = ({author, offer}) => {
   const newCard = card.cloneNode(true);
   createSimpleText(newCard, '.popup__title', offer.title);
   createSimpleText(newCard, '.popup__text--address', offer.address);
-  createSimpleText(newCard, '.popup__type', typeToText[offer.address]);
+  createSimpleText(newCard, '.popup__type', typeToText[offer.type]);
   createSimpleText(newCard, '.popup__description', offer.description);
   createPriceText(newCard, '.popup__text--price', offer.price);
   createAvatar(newCard, '.popup__avatar', author.avatar);

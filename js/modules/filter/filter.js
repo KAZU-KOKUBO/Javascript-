@@ -2,9 +2,9 @@ import { removeMarkerGroup } from '../map/map.js';
 
 const FILTERING_DELAY = 500;
 
-const PRICE_RANGE = {
-  low: 10000,
-  middle: 50000,
+const priceRange = {
+  'LOW': 10000,
+  'MIDDLE': 50000,
 };
 
 let timer;
@@ -24,13 +24,13 @@ const filterByGuests = ({ guests }) => +guestsFilterSelect.value === guests || g
 const filterByPrice = ({ price }) => {
   switch (priceFilterSelect.value) {
     case 'low':
-      return price <= PRICE_RANGE.low;
+      return price <= priceRange['LOW'];
 
     case 'middle':
-      return price > PRICE_RANGE.low && price <= PRICE_RANGE.middle;
+      return price > priceRange['LOW'] && price <= priceRange['MIDDLE'];
 
     case 'high':
-      return price > PRICE_RANGE.middle;
+      return price > priceRange['MIDDLE'];
 
     default:
       return true;
