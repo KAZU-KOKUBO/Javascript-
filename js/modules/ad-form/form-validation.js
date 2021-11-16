@@ -19,9 +19,7 @@ const trackTypeInputChange = () => {
   priceInputElement.min = minPriceRooms[typeSelectElement.value];
 };
 
-const onTypeInputChange = () => {
-  trackTypeInputChange();
-};
+const onTypeInputChange = () => trackTypeInputChange();
 
 const onTimeInChange = ({ target }) => {
   timeOutSelectElement.value = target.value;
@@ -53,16 +51,19 @@ const roomsToOptions = {
   },
 };
 
-const onRoomsSelectChange = ({ target }) => {
+const trackRoomsSelectChange = () => {
   guestsOptionElements.forEach((option) => (option.disabled = true));
-  roomsToOptions[target.value].items.forEach((item) => {
+  roomsToOptions[roomsSelectElement.value].items.forEach((item) => {
     guestsOptionElements[item].disabled = false;
   });
   guestsSelectElement.value = roomsToOptions[roomsSelectElement.value].value;
 };
 
+const onRoomsSelectChange = () => trackRoomsSelectChange();
+
 export const validateForm = () => {
   trackTypeInputChange();
+  trackRoomsSelectChange();
   timeInSelectElement.addEventListener('change', onTimeInChange);
   timeOutSelectElement.addEventListener('change', onTimeOutChange);
   typeSelectElement.addEventListener('change', onTypeInputChange);

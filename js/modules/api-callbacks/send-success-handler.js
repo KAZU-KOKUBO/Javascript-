@@ -39,4 +39,5 @@ export const sendSuccessHandler = () => {
   forms.forEach((form) => form.reset());
   resetAddForm();
   setPinMarkersStartState();
+  document.activeElement.blur();
 };

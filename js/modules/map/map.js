@@ -16,7 +16,10 @@ const mapInteractive = L.map('map-canvas');
 let mainPinMarker;
 let markerGroup;
 
-export const removeMarkerGroup = () => {
+export const removeMarkersGroup = () => {
+  if (!markerGroup) {
+    return;
+  }
   for (const layer in markerGroup._layers) {
     mapInteractive.removeLayer(markerGroup._layers[layer]);
   }
@@ -28,9 +31,9 @@ export const setPinMarkersStartState = () => {
 };
 
 export const addMarkersGroup = (adverts) => {
+  removeMarkersGroup();
   markerGroup = L.layerGroup().addTo(mapInteractive);
   adverts
-    .slice()
     .filter(filterAdverts)
     .slice(0, ADVERT_COUNT)
     .forEach((el) => {

@@ -25,12 +25,16 @@ const addListeners = () => {
 };
 
 export const getErrorHandler = () => {
+  if (document.querySelector('.error')) {
+    return;
+  }
   renderElement(createErrorMarkup('При загрузке данных произошла ошибка!'), document.body);
   addListeners();
 };
 
 export const sendErrorHandler = () => {
   renderElement(createErrorMarkup('Ошибка размещения объявления', true), document.body);
+  document.activeElement.blur();
   addListeners();
 };
 

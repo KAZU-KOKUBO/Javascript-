@@ -1,5 +1,3 @@
-import { removeMarkerGroup } from '../map/map.js';
-
 const FILTERING_DELAY = 500;
 
 const priceRange = {
@@ -61,7 +59,6 @@ export const setFilterFormChange = (cb) => {
   filterForm.addEventListener('change', () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      removeMarkerGroup();
       cb();
     }, FILTERING_DELAY);
   });
