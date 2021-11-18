@@ -5,6 +5,7 @@ import {sendSuccessHandler} from '../api-callbacks/send-success-handler.js';
 import {sendErrorHandler} from '../api-callbacks/error-action-handler.js';
 import {setPinMarkersStartState} from '../map/map.js';
 import {clearImgBlocks, addChooserInputsListeners} from './load-photo.js';
+import { trackRoomsSelectChange } from '../ad-form/form-validation.js';
 
 const addForm = document.querySelector('.ad-form');
 const filter = document.querySelector('.map__filters');
@@ -29,6 +30,7 @@ const addFormResetHandler = () => {
   setTimeout(() => {
     resetAddForm();
     resetFilter();
+    trackRoomsSelectChange();
   });
 };
 
