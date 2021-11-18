@@ -1,6 +1,7 @@
 import { isEscEvent, renderElement } from '../utils/utils.js';
 import { setPinMarkersStartState} from '../map/map.js';
 import { resetAddForm } from '../ad-form/activate-ad-form.js';
+import { trackRoomsSelectChange } from '../ad-form/form-validation.js';
 
 const forms = document.querySelectorAll('form');
 
@@ -39,5 +40,6 @@ export const sendSuccessHandler = () => {
   forms.forEach((form) => form.reset());
   resetAddForm();
   setPinMarkersStartState();
+  trackRoomsSelectChange();
   document.activeElement.blur();
 };

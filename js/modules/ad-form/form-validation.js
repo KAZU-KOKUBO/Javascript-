@@ -51,7 +51,7 @@ const roomsToOptions = {
   },
 };
 
-const trackRoomsSelectChange = () => {
+export const trackRoomsSelectChange = () => {
   guestsOptionElements.forEach((option) => (option.disabled = true));
   roomsToOptions[roomsSelectElement.value].items.forEach((item) => {
     guestsOptionElements[item].disabled = false;
